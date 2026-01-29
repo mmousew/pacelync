@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaceLync - Travel China Guides & Itinerary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .hero-bg { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=1600'); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="flex items-center justify-between px-8 py-4 bg-white sticky top-0 z-50 shadow-sm">
+        <div class="text-2xl font-black italic tracking-tighter">PaceLync</div>
+        <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#" class="hover:text-orange-500">Travel Guides</a>
+            <a href="#" class="hover:text-orange-500">Custom Itinerary</a>
+        </div>
+        <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-semibold">Login</button>
+    </nav>
+
+    <header class="hero-bg h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-white px-4">
+        <h1 class="serif text-4xl md:text-6xl mb-6 text-center">Travel China guides & Itinerary</h1>
+        <div class="relative w-full max-w-2xl">
+            <input type="text" placeholder="Where do you want to go?" class="w-full py-4 px-6 rounded-full text-black focus:outline-none shadow-lg">
+            <button class="absolute right-2 top-2 bg-orange-500 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-4 py-16">
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-2xl font-bold flex items-center"><span class="mr-2">🗺️</span> Free China City Guides</h2>
+            <a href="#" class="text-gray-500 hover:underline">View All &gt;</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="detail.html" class="group relative h-64 overflow-hidden rounded-xl">
+                <img src="https://images.unsplash.com/photo-1599577180570-74034870da3d?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
+                    <span class="text-2xl font-bold">Beijing</span>
+                    <span class="text-sm opacity-80">北京</span>
+                </div>
+            </a>
+            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1526749837599-b4efa916aa5e?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
+                    <span class="text-2xl font-bold">Shanghai</span>
+                    <span class="text-sm opacity-80">上海</span>
+                </div>
+            </div>
+            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
+                    <span class="text-2xl font-bold">Chengdu</span>
+                    <span class="text-sm opacity-80">成都</span>
+                </div>
+            </div>
+            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
+                <img src="https://images.unsplash.com/photo-1543097692-fa13c6cd8595?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
+                    <span class="text-2xl font-bold">Chongqing</span>
+                    <span class="text-sm opacity-80">重庆</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-black py-20 text-white text-center">
+        <h2 class="serif text-3xl mb-12">Travel China With Confidence</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-4">
+            <div class="bg-white text-black p-8 rounded-2xl flex flex-col items-start text-left">
+                <span class="text-orange-500 font-bold">Free</span>
+                <h3 class="text-xl font-bold my-4">500+ Detailed China Travel Guides</h3>
+                <ul class="space-y-3 mb-8 text-sm opacity-70">
+                    <li>✓ Real-time Weather & Map</li>
+                    <li>✓ Local Food Recommendations</li>
+                    <li>✓ Hidden Gems Discovery</li>
+                </ul>
+                <button class="mt-auto w-full border-2 border-black py-2 rounded-full font-bold">Browse</button>
+            </div>
+            <div class="bg-white text-black p-8 rounded-2xl border-4 border-orange-500 scale-105 shadow-2xl flex flex-col items-start text-left">
+                <span class="text-orange-500 font-bold">$7.9/Day</span>
+                <h3 class="text-xl font-bold my-4">Custom Itinerary With A Local Advisor</h3>
+                <ul class="space-y-3 mb-8 text-sm opacity-70">
+                    <li>✓ 1-on-1 Planning Session</li>
+                    <li>✓ Personalized Route</li>
+                    <li>✓ WeChat Support</li>
+                </ul>
+                <button class="mt-auto w-full bg-black text-white py-2 rounded-full font-bold">Order Guide</button>
+            </div>
+            <div class="bg-white text-black p-8 rounded-2xl flex flex-col items-start text-left">
+                <span class="text-orange-500 font-bold">Custom Require</span>
+                <h3 class="text-xl font-bold my-4">Full Concierge & Booking Service</h3>
+                <ul class="space-y-3 mb-8 text-sm opacity-70">
+                    <li>✓ Complete Hotel Booking</li>
+                    <li>✓ Private Car & Guide</li>
+                    <li>✓ 24/7 Emergency Help</li>
+                </ul>
+                <button class="mt-auto w-full bg-black text-white py-2 rounded-full font-bold">Chat with Advisor</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-2xl font-black italic">PaceLync</footer>
+</body>
+</html>

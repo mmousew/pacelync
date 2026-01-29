@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beijing Travel Guide - PaceLync</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <nav class="p-6 border-b flex justify-between items-center">
+        <a href="index.html" class="text-xl font-black italic">PaceLync</a>
+        <button class="text-sm font-semibold border px-4 py-2 rounded-full">Back to Home</button>
+    </nav>
+
+    <div class="relative h-[400px]">
+        <img src="https://images.unsplash.com/photo-1599577180570-74034870da3d?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40 flex items-end p-12">
+            <div class="text-white">
+                <p class="uppercase tracking-widest text-sm mb-2">City Guide</p>
+                <h1 class="text-5xl font-bold serif">Beijing: The Ancient Capital</h1>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-3 gap-12">
+        <div class="md:col-span-2 space-y-8">
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Overview</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Beijing is not just the political center of China; it's a living museum. From the massive Forbidden City to the winding alleys of the Hutongs, the city offers a contrast between imperial grandeur and everyday life.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Must-Visit Attractions</h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="flex gap-4 border rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1547984609-444492007c3e?auto=format&fit=crop&q=80&w=200" class="w-32 h-32 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold">The Forbidden City</h3>
+                            <p class="text-sm text-gray-500">The world's largest palace complex, home to 24 emperors.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 border rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=200" class="w-32 h-32 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold">Mutianyu Great Wall</h3>
+                            <p class="text-sm text-gray-500">Experience the majesty of China with less crowds and cable car options.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="space-y-6">
+            <div class="bg-gray-50 p-6 rounded-2xl border border-orange-100">
+                <h3 class="text-xl font-bold mb-4">Need a Plan?</h3>
+                <p class="text-sm text-gray-500 mb-6">Our local advisors can create a customized Beijing itinerary for you in under 24 hours.</p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-sm font-semibold">
+                        <span class="bg-orange-100 p-2 rounded-full mr-3">💰</span> Starting at $7.9/Day
+                    </div>
+                    <div class="flex items-center text-sm font-semibold">
+                        <span class="bg-orange-100 p-2 rounded-full mr-3">🕒</span> 24h Response Time
+                    </div>
+                </div>
+                <button class="w-full bg-orange-500 text-white py-3 rounded-xl mt-8 font-bold hover:bg-orange-600 transition">Get My Custom Plan</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="bg-gray-100 py-12 text-center text-gray-400 text-sm">
+        &copy; 2026 PaceLync Travel. All rights reserved.
+    </footer>
+</body>
+</html>
