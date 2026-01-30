@@ -5,32 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaceLync - Travel China Guides & Itinerary</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         .serif { font-family: 'Playfair Display', serif; }
-        .hero-bg { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=1600'); }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .carousel-slide.active {
+            display: block;
+            opacity: 1;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .carousel-indicators button.active {
+            background-color: white;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-    <nav class="flex items-center justify-between px-8 py-4 bg-white sticky top-0 z-50 shadow-sm">
-        <div class="text-2xl font-black italic tracking-tighter">PaceLync</div>
+    <nav class="flex items-center justify-center px-8 py-4 bg-white sticky top-0 z-50 shadow-sm">
+        <div class="absolute left-8 text-2xl font-black italic tracking-tighter">PaceLync</div>
         <div class="hidden md:flex space-x-8 font-medium">
             <a href="#" class="hover:text-orange-500">Travel Guides</a>
             <a href="#" class="hover:text-orange-500">Custom Itinerary</a>
+            <a href="#" class="hover:text-orange-500">Terms of Service</a>
+            <a href="#" class="hover:text-orange-500">Refund Policy</a>
         </div>
-        <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-semibold">Login</button>
     </nav>
 
-    <header class="hero-bg h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-white px-4">
-        <h1 class="serif text-4xl md:text-6xl mb-6 text-center">Travel China guides & Itinerary</h1>
-        <div class="relative w-full max-w-2xl">
-            <input type="text" placeholder="Where do you want to go?" class="w-full py-4 px-6 rounded-full text-black focus:outline-none shadow-lg">
-            <button class="absolute right-2 top-2 bg-orange-500 p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            </button>
+    <header class="carousel h-[500px] relative flex flex-col items-center justify-center text-white px-4">
+        <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=1');"></div>
+        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=2');"></div>
+        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=3');"></div>
+        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=4');"></div>
+        
+        <div class="relative z-20 flex flex-col items-center justify-center h-full">
+            <h1 class="serif text-4xl md:text-6xl mb-6 text-center">Travel China guides & Itinerary</h1>
+        </div>
+        
+        <div class="carousel-indicators">
+            <button class="active" onclick="currentSlide(0)"></button>
+            <button onclick="currentSlide(1)"></button>
+            <button onclick="currentSlide(2)"></button>
+            <button onclick="currentSlide(3)"></button>
         </div>
     </header>
+
+    <script>
+        let currentCarouselIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicators button');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(btn => btn.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function currentSlide(index) {
+            currentCarouselIndex = index;
+            showSlide(index);
+        }
+
+        function nextSlide() {
+            currentCarouselIndex = (currentCarouselIndex + 1) % slides.length;
+            showSlide(currentCarouselIndex);
+        }
+
+        // Auto-rotate carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Initialize Stripe
+        const stripe = Stripe('pk_test_your_publishable_key'); // Replace with your actual publishable key
+        const elements = stripe.elements();
+    </script>
 
     <section class="max-w-7xl mx-auto px-4 py-16">
         <div class="flex justify-between items-end mb-8">
@@ -39,28 +118,28 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <a href="detail.html" class="group relative h-64 overflow-hidden rounded-xl">
-                <img src="https://images.unsplash.com/photo-1599577180570-74034870da3d?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <img src="https://picsum.photos/400/300?random=5" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
                     <span class="text-2xl font-bold">Beijing</span>
                     <span class="text-sm opacity-80">北京</span>
                 </div>
             </a>
             <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://images.unsplash.com/photo-1526749837599-b4efa916aa5e?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <img src="https://picsum.photos/400/300?random=6" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
                     <span class="text-2xl font-bold">Shanghai</span>
                     <span class="text-sm opacity-80">上海</span>
                 </div>
             </div>
             <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <img src="https://picsum.photos/400/300?random=7" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
                     <span class="text-2xl font-bold">Chengdu</span>
                     <span class="text-sm opacity-80">成都</span>
                 </div>
             </div>
             <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://images.unsplash.com/photo-1543097692-fa13c6cd8595?auto=format&fit=crop&q=80&w=400" class="absolute inset-0 w-full h-full object-cover">
+                <img src="https://picsum.photos/400/300?random=8" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
                     <span class="text-2xl font-bold">Chongqing</span>
                     <span class="text-sm opacity-80">重庆</span>
