@@ -1,189 +1,80 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaceLync - Travel China Guides & Itinerary</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .carousel {
-            position: relative;
-            overflow: hidden;
-        }
-        .carousel-slide {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 0;
-        }
-        .carousel-slide.active {
-            display: block;
-            opacity: 1;
-        }
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        .carousel-indicators button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid white;
-            background-color: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .carousel-indicators button.active {
-            background-color: white;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PaceLync is an independent software company building focused, reliable tools for modern work.">
+  <meta name="theme-color" content="#10231f">
+  <title>PaceLync | Thoughtful software for modern work</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
-<body class="bg-gray-50">
-    <nav class="flex items-center justify-center px-8 py-4 bg-white sticky top-0 z-50 shadow-sm">
-        <div class="absolute left-8 text-2xl font-black italic tracking-tighter">PaceLync</div>
-        <div class="hidden md:flex space-x-8 font-medium">
-            <a href="#" class="hover:text-orange-500">Travel Guides</a>
-            <a href="#" class="hover:text-orange-500">Custom Itinerary</a>
-            <a href="#" class="hover:text-orange-500">Terms of Service</a>
-            <a href="#" class="hover:text-orange-500">Refund Policy</a>
+<body data-page="home">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="PaceLync home"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>PaceLync</a>
+      <nav class="nav" aria-label="Primary"><a href="#company">Company</a><a href="#capabilities">Capabilities</a><a href="#principles">Principles</a><a href="#contact">Contact</a></nav>
+      <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language"><span class="active">EN</span><i>/</i><span>中文</span></button>
+      <a class="header-cta" href="mailto:contact@pacelync.com">Get in touch ↗</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><i></i><i></i><i></i><span>Menu</span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-menu" data-mobile-menu><a href="#company">Company</a><a href="#capabilities">Capabilities</a><a href="#principles">Principles</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-grid"></div><div class="orbit"></div>
+      <div class="shell hero-layout">
+        <div class="reveal">
+          <p class="eyebrow"><i></i> Independent software company</p>
+          <h1>Software that makes<br><em>work feel lighter.</em></h1>
+          <p class="lede">PaceLync designs and develops focused digital products for people who value clarity, momentum, and thoughtful craft.</p>
+          <div class="actions"><a class="button" href="#company">Discover PaceLync ↓</a><a class="email" href="mailto:contact@pacelync.com">contact@pacelync.com ↗</a></div>
         </div>
-    </nav>
-
-    <header class="carousel h-[500px] relative flex flex-col items-center justify-center text-white px-4">
-        <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=1');"></div>
-        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=2');"></div>
-        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=3');"></div>
-        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/1600/500?random=4');"></div>
-        
-        <div class="relative z-20 flex flex-col items-center justify-center h-full">
-            <h1 class="serif text-4xl md:text-6xl mb-6 text-center">Travel China guides & Itinerary</h1>
-        </div>
-        
-        <div class="carousel-indicators">
-            <button class="active" onclick="currentSlide(0)"></button>
-            <button onclick="currentSlide(1)"></button>
-            <button onclick="currentSlide(2)"></button>
-            <button onclick="currentSlide(3)"></button>
-        </div>
-    </header>
-
-    <script>
-        let currentCarouselIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.carousel-indicators button');
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(btn => btn.classList.remove('active'));
-            
-            slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-        }
-
-        function currentSlide(index) {
-            currentCarouselIndex = index;
-            showSlide(index);
-        }
-
-        function nextSlide() {
-            currentCarouselIndex = (currentCarouselIndex + 1) % slides.length;
-            showSlide(currentCarouselIndex);
-        }
-
-        // Auto-rotate carousel every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Initialize Stripe
-        const stripe = Stripe('pk_test_your_publishable_key'); // Replace with your actual publishable key
-        const elements = stripe.elements();
-    </script>
-
-    <section class="max-w-7xl mx-auto px-4 py-16">
-        <div class="flex justify-between items-end mb-8">
-            <h2 class="text-2xl font-bold flex items-center"><span class="mr-2">🗺️</span> Free China City Guides</h2>
-            <a href="#" class="text-gray-500 hover:underline">View All &gt;</a>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="detail.html" class="group relative h-64 overflow-hidden rounded-xl">
-                <img src="https://picsum.photos/400/300?random=5" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-                    <span class="text-2xl font-bold">Beijing</span>
-                    <span class="text-sm opacity-80">北京</span>
-                </div>
-            </a>
-            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://picsum.photos/400/300?random=6" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-                    <span class="text-2xl font-bold">Shanghai</span>
-                    <span class="text-sm opacity-80">上海</span>
-                </div>
+        <div class="product reveal delay">
+          <div class="app-head"><b><i></i>PaceLync</b><span><i></i> In focus</span></div>
+          <div class="app-body">
+            <aside><i></i><i></i><i></i><b></b></aside>
+            <div class="app-main"><small>TODAY</small><h2>Move one idea<br>forward.</h2>
+              <div class="task"><i>✓</i><span><b>Shape the next release</b><small>Product planning · 10:30</small></span></div>
+              <div class="task muted"><i></i><span><b>Review customer notes</b><small>Research · This afternoon</small></span></div>
+              <div class="progress-copy"><span>Weekly momentum</span><b>72%</b></div><div class="progress"><i></i></div>
             </div>
-            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://picsum.photos/400/300?random=7" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-                    <span class="text-2xl font-bold">Chengdu</span>
-                    <span class="text-sm opacity-80">成都</span>
-                </div>
-            </div>
-            <div class="group relative h-64 overflow-hidden rounded-xl bg-gray-200">
-                <img src="https://picsum.photos/400/300?random=8" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-                    <span class="text-2xl font-bold">Chongqing</span>
-                    <span class="text-sm opacity-80">重庆</span>
-                </div>
-            </div>
+          </div>
+          <div class="note"><b>01</b><span>Designed around attention,<br>not distraction.</span></div>
         </div>
+      </div>
+      <div class="shell hero-foot"><span>Product strategy</span><i></i><span>Apple platforms</span><i></i><span>Web experiences</span></div>
     </section>
 
-    <section class="bg-black py-20 text-white text-center">
-        <h2 class="serif text-3xl mb-12">Travel China With Confidence</h2>
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-4">
-            <div class="bg-white text-black p-8 rounded-2xl flex flex-col items-start text-left">
-                <span class="text-orange-500 font-bold">Free</span>
-                <h3 class="text-xl font-bold my-4">500+ Detailed China Travel Guides</h3>
-                <ul class="space-y-3 mb-8 text-sm opacity-70">
-                    <li>✓ Real-time Weather & Map</li>
-                    <li>✓ Local Food Recommendations</li>
-                    <li>✓ Hidden Gems Discovery</li>
-                </ul>
-                <button class="mt-auto w-full border-2 border-black py-2 rounded-full font-bold">Browse</button>
-            </div>
-            <div class="bg-white text-black p-8 rounded-2xl border-4 border-orange-500 scale-105 shadow-2xl flex flex-col items-start text-left">
-                <span class="text-orange-500 font-bold">$7.9/Day</span>
-                <h3 class="text-xl font-bold my-4">Custom Itinerary With A Local Advisor</h3>
-                <ul class="space-y-3 mb-8 text-sm opacity-70">
-                    <li>✓ 1-on-1 Planning Session</li>
-                    <li>✓ Personalized Route</li>
-                    <li>✓ WeChat Support</li>
-                </ul>
-                <button class="mt-auto w-full bg-black text-white py-2 rounded-full font-bold">Order Guide</button>
-            </div>
-            <div class="bg-white text-black p-8 rounded-2xl flex flex-col items-start text-left">
-                <span class="text-orange-500 font-bold">Custom Require</span>
-                <h3 class="text-xl font-bold my-4">Full Concierge & Booking Service</h3>
-                <ul class="space-y-3 mb-8 text-sm opacity-70">
-                    <li>✓ Complete Hotel Booking</li>
-                    <li>✓ Private Car & Guide</li>
-                    <li>✓ 24/7 Emergency Help</li>
-                </ul>
-                <button class="mt-auto w-full bg-black text-white py-2 rounded-full font-bold">Chat with Advisor</button>
-            </div>
-        </div>
-    </section>
+    <section class="section" id="company"><div class="shell split">
+      <div class="label reveal"><b>01</b> Company</div>
+      <div class="section-copy reveal delay"><h2>Small by design.<br>Serious about the details.</h2><p>PaceLync is an independent software company creating practical products for modern knowledge work. We turn complex workflows into calm, dependable experiences that people can understand and trust.</p><p>Our work spans product strategy, interface design, engineering, and long-term product stewardship. We build deliberately, protect user attention, and prefer useful progress over feature noise.</p></div>
+    </div></section>
 
-    <footer class="py-10 text-center text-2xl font-black italic">PaceLync</footer>
+    <section class="section capabilities" id="capabilities"><div class="shell">
+      <div class="split section-title reveal"><div class="label pale"><b>02</b> Capabilities</div><h2>From a clear idea<br>to dependable software.</h2></div>
+      <div class="cards">
+        <article class="card reveal"><small>01</small><div class="shape circles"><i></i><i></i><i></i></div><h3>Product strategy</h3><p>Focused product definition, user flows, prototypes, and clear priorities before code becomes expensive.</p></article>
+        <article class="card reveal delay"><small>02</small><div class="shape phone"><i></i><b></b></div><h3>Apple platforms</h3><p>Native experiences for iPhone, iPad, and Mac, designed around platform conventions and real user needs.</p></article>
+        <article class="card reveal delay-two"><small>03</small><div class="shape windows"><i></i><i></i><i></i></div><h3>Web experiences</h3><p>Responsive websites and web applications that are fast, accessible, maintainable, and easy to use.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section principles" id="principles"><div class="shell principles-grid">
+      <div class="principles-copy reveal"><div class="label"><b>03</b> Principles</div><h2>How we make<br>product decisions.</h2><p>Good software earns a place in someone's day. These principles guide what we build and what we leave out.</p></div>
+      <div class="principle-list">
+        <article class="reveal"><small>01</small><div><h3>Clarity over clutter</h3><p>Every screen should make the next useful action easier to see.</p></div></article>
+        <article class="reveal"><small>02</small><div><h3>Privacy by default</h3><p>Collect less, explain clearly, and treat user information with care.</p></div></article>
+        <article class="reveal"><small>03</small><div><h3>Built for the long term</h3><p>Reliable foundations, restrained choices, and continuous improvement.</p></div></article>
+      </div>
+    </div></section>
+
+    <section class="contact" id="contact"><div class="shell reveal"><p class="eyebrow"><i></i> Business &amp; developer relations</p><h2>Let’s build something<br><em>worth keeping.</em></h2><p>For company, product, partnership, or developer program inquiries, contact PaceLync directly.</p><a class="contact-link" href="mailto:contact@pacelync.com"><span>contact@pacelync.com</span><i>↗</i></a></div></section>
+  </main>
+
+  <footer><div class="shell footer-grid"><div><a class="brand" href="index.html"><span class="brand-icon"><i></i><i></i><i></i></span>PaceLync</a><p>Thoughtful software for modern work.</p></div><div><h3>Company</h3><a href="#company">About</a><a href="#capabilities">Capabilities</a><a href="#contact">Contact</a></div><div><h3>Legal</h3><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div><div><h3>Contact</h3><a class="green" href="mailto:contact@pacelync.com">contact@pacelync.com</a></div></div><div class="shell footer-bottom"><span>© <span data-year></span> PaceLync. All rights reserved.</span><span>Independent software company</span></div></footer>
+  <script src="assets/site.js"></script>
 </body>
 </html>
