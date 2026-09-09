@@ -19,15 +19,15 @@ if (button && menu) {
 const languageButton = document.querySelector('[data-language-toggle]');
 const translations = [
   ['.skip', 'Skip to content', '跳转到正文'],
-  ['.nav a:nth-child(1),.mobile-nav a:nth-child(1)', 'Company', '公司介绍'],
-  ['.nav a:nth-child(2),.mobile-nav a:nth-child(2)', 'Capabilities', '业务能力'],
+  ['.nav a:nth-child(1),.mobile-nav a:nth-child(1)', 'About Us', '关于我们'],
+  ['.nav a:nth-child(2),.mobile-nav a:nth-child(2)', 'Products / Services', '产品与服务'],
   ['.nav a:nth-child(3),.mobile-nav a:nth-child(3)', 'Principles', '产品原则'],
   ['.nav a:nth-child(4),.mobile-nav a:nth-child(4)', 'Contact', '联系我们'],
   ['.header-cta', 'Get in touch ↗', '联系我们 ↗'],
-  ['.hero .eyebrow', '<i></i> Independent software company', '<i></i> 独立软件公司'],
+  ['.hero .eyebrow', '<i></i> PaceLync LLC · Technology company', '<i></i> PaceLync LLC · 科技公司'],
   ['.hero h1', 'Software that makes<br><em>work feel lighter.</em>', '让工作更简单，<br><em>让想法走得更远。</em>'],
-  ['.hero .lede', 'PaceLync designs and develops focused digital products for people who value clarity, momentum, and thoughtful craft.', 'PaceLync 设计并开发专注、可靠的数字产品，为重视清晰、高效与产品品质的人提供更好的工作体验。'],
-  ['.hero .button', 'Discover PaceLync ↓', '了解 PaceLync ↓'],
+  ['.hero .lede', 'PaceLync LLC is a technology company focused on software development, digital products, and mobile applications.', 'PaceLync LLC 是一家专注于软件开发、数字产品和移动应用的科技公司。'],
+  ['.hero .button', 'About PaceLync ↓', '了解 PaceLync ↓'],
   ['.app-head > span', '<i></i> In focus', '<i></i> 专注中'],
   ['.app-main > small', 'TODAY', '今天'],
   ['.app-main h2', 'Move one idea<br>forward.', '让一个想法<br>向前一步。'],
@@ -37,21 +37,21 @@ const translations = [
   ['.task.muted small', 'Research · This afternoon', '用户研究 · 今天下午'],
   ['.progress-copy span', 'Weekly momentum', '本周进度'],
   ['.note span', 'Designed around attention,<br>not distraction.', '围绕专注而设计，<br>远离无谓干扰。'],
-  ['.hero-foot span:nth-child(1)', 'Product strategy', '产品策略'],
-  ['.hero-foot span:nth-child(3)', 'Apple platforms', 'Apple 平台'],
-  ['.hero-foot span:nth-child(5)', 'Web experiences', '网页体验'],
-  ['#company .label', '<b>01</b> Company', '<b>01</b> 公司介绍'],
-  ['#company h2', 'Small by design.<br>Serious about the details.', '保持精简，<br>认真对待每个细节。'],
-  ['#company .section-copy p:nth-of-type(1)', 'PaceLync LLC is an independent software company creating practical products for modern knowledge work. We turn complex workflows into calm, dependable experiences that people can understand and trust.', 'PaceLync LLC 是一家独立软件公司，专注于为现代知识工作打造实用产品。我们把复杂的工作流程转化为清晰、可靠、易于理解和信任的数字体验。'],
-  ['#company .section-copy p:nth-of-type(2)', 'Our work spans product strategy, interface design, engineering, and long-term product stewardship. We build deliberately, protect user attention, and prefer useful progress over feature noise.', '我们的工作涵盖产品策略、界面设计、软件工程与产品的长期维护。我们审慎构建每项功能，尊重用户的注意力，并始终让实际价值优先于功能堆砌。'],
-  ['#capabilities .label', '<b>02</b> Capabilities', '<b>02</b> 业务能力'],
-  ['#capabilities .section-title h2', 'From a clear idea<br>to dependable software.', '从清晰的想法，<br>到可靠的软件。'],
-  ['#capabilities .card:nth-child(1) h3', 'Product strategy', '产品策略'],
-  ['#capabilities .card:nth-child(1) p', 'Focused product definition, user flows, prototypes, and clear priorities before code becomes expensive.', '在进入高成本开发前，完成清晰的产品定义、用户流程、原型设计与优先级规划。'],
-  ['#capabilities .card:nth-child(2) h3', 'Apple platforms', 'Apple 平台开发'],
-  ['#capabilities .card:nth-child(2) p', 'Native experiences for iPhone, iPad, and Mac, designed around platform conventions and real user needs.', '面向 iPhone、iPad 与 Mac 打造原生体验，遵循平台规范，也忠于真实的用户需求。'],
-  ['#capabilities .card:nth-child(3) h3', 'Web experiences', '网页与应用体验'],
-  ['#capabilities .card:nth-child(3) p', 'Responsive websites and web applications that are fast, accessible, maintainable, and easy to use.', '构建快速、易用、兼顾无障碍并便于长期维护的响应式网站与 Web 应用。'],
+  ['.hero-foot span:nth-child(1)', 'Software development', '软件开发'],
+  ['.hero-foot span:nth-child(3)', 'Mobile applications', '移动应用'],
+  ['.hero-foot span:nth-child(5)', 'Digital products', '数字产品'],
+  ['#company .label', '<b>01</b> About Us', '<b>01</b> 关于我们'],
+  ['#company h2', 'About<br>PaceLync LLC.', '关于<br>PaceLync LLC。'],
+  ['#company .section-copy p:nth-of-type(1)', 'PaceLync LLC is a technology company that designs, develops, and maintains practical software for modern work. We create clear, dependable experiences across mobile and web platforms.', 'PaceLync LLC 是一家科技公司，为现代工作设计、开发和维护实用软件。我们面向移动端和网页平台，打造清晰、可靠的数字体验。'],
+  ['#company .section-copy p:nth-of-type(2)', 'Our work includes software engineering, mobile application development, digital product design, interface design, testing, and long-term product maintenance. We build deliberately and treat reliability, privacy, and usability as core product requirements.', '我们的业务包括软件工程、移动应用开发、数字产品设计、界面设计、测试和长期产品维护。我们审慎构建产品，并将可靠性、隐私和易用性作为核心要求。'],
+  ['#capabilities .label', '<b>02</b> Products / Services', '<b>02</b> 产品与服务'],
+  ['#capabilities .section-title h2', 'Software for useful,<br>modern digital experiences.', '面向真实需求，<br>打造现代数字体验。'],
+  ['#capabilities .card:nth-child(1) h3', 'Software Development', '软件开发'],
+  ['#capabilities .card:nth-child(1) p', 'Product planning, interface design, engineering, testing, and ongoing maintenance for reliable software.', '提供产品规划、界面设计、工程开发、测试和持续维护，构建可靠的软件。'],
+  ['#capabilities .card:nth-child(2) h3', 'Mobile Applications', '移动应用'],
+  ['#capabilities .card:nth-child(2) p', 'Mobile application design and development for iPhone, iPad, and other modern mobile platforms.', '面向 iPhone、iPad 和其他现代移动平台提供应用设计与开发。'],
+  ['#capabilities .card:nth-child(3) h3', 'Digital Products', '数字产品'],
+  ['#capabilities .card:nth-child(3) p', 'Focused digital tools and responsive web experiences built around clear user needs and practical outcomes.', '围绕明确的用户需求和实际成果，打造专注的数字工具与响应式网页体验。'],
   ['#principles .label', '<b>03</b> Principles', '<b>03</b> 产品原则'],
   ['#principles .principles-copy h2', 'How we make<br>product decisions.', '我们如何做出<br>产品决策。'],
   ['#principles .principles-copy > p', "Good software earns a place in someone's day. These principles guide what we build and what we leave out.", '好的软件值得成为日常生活的一部分。这些原则决定我们构建什么，也决定我们舍弃什么。'],
@@ -67,16 +67,16 @@ const translations = [
   ['.company-details > div:nth-child(1) small', 'Legal entity', '法律主体'],
   ['.company-details > div:nth-child(2) small', 'Registered office', '注册地址'],
   ['.company-details > div:nth-child(3) small', 'Phone', '联系电话'],
-  ['.footer-grid > div:first-child > p', 'Thoughtful software for modern work.', '为现代工作打造用心的软件。'],
+  ['.footer-grid > div:first-child > p', 'Software development, mobile applications, and digital products.', '软件开发、移动应用和数字产品。'],
   ['.footer-grid > div:nth-child(2) h3', 'Company', '公司'],
-  ['.footer-grid > div:nth-child(2) a:nth-of-type(1)', 'About', '关于我们'],
-  ['.footer-grid > div:nth-child(2) a:nth-of-type(2)', 'Capabilities', '业务能力'],
+  ['.footer-grid > div:nth-child(2) a:nth-of-type(1)', 'About Us', '关于我们'],
+  ['.footer-grid > div:nth-child(2) a:nth-of-type(2)', 'Products / Services', '产品与服务'],
   ['.footer-grid > div:nth-child(2) a:nth-of-type(3)', 'Contact', '联系我们'],
   ['.footer-grid > div:nth-child(3) h3', 'Legal', '法律信息'],
   ['.footer-grid > div:nth-child(3) a:nth-of-type(1)', 'Privacy Policy', '隐私政策'],
   ['.footer-grid > div:nth-child(3) a:nth-of-type(2)', 'Terms of Use', '使用条款'],
   ['.footer-grid > div:nth-child(4) h3', 'Contact', '联系方式'],
-  ['body[data-page="home"] .footer-bottom > span:last-child', 'Independent software company', '独立软件公司']
+  ['body[data-page="home"] .footer-bottom > span:last-child', 'Wyoming technology company', '怀俄明州科技公司']
 ];
 
 const pageType = document.body.dataset.page || 'home';
@@ -126,14 +126,14 @@ function applyLanguage(language) {
   document.documentElement.lang = chinese ? 'zh-CN' : 'en';
   const description = document.querySelector('meta[name="description"]');
   if (pageType === 'home') {
-    document.title = chinese ? 'PaceLync｜为现代工作打造用心的软件' : 'PaceLync | Thoughtful software for modern work';
-    if (description) description.content = chinese ? 'PaceLync 是一家独立软件公司，专注于为现代工作打造清晰、可靠的数字产品。' : 'PaceLync is an independent software company building focused, reliable tools for modern work.';
+    document.title = chinese ? 'PaceLync LLC｜软件开发、移动应用与数字产品' : 'PaceLync LLC | Software Development & Digital Products';
+    if (description) description.content = chinese ? 'PaceLync LLC 是一家专注于软件开发、数字产品和移动应用的科技公司。' : 'PaceLync LLC is a technology company focused on software development, digital products, and mobile applications.';
   } else if (legalEnglish && legalChinese[pageType]) {
     const localized = legalChinese[pageType];
     legalHero.innerHTML = chinese ? localized.hero : legalEnglish.hero;
     legalContent.innerHTML = chinese ? localized.content : legalEnglish.content;
-    document.title = chinese ? localized.title : pageType === 'privacy' ? 'Privacy Policy | PaceLync' : 'Terms of Use | PaceLync';
-    if (description) description.content = chinese ? localized.description : pageType === 'privacy' ? 'PaceLync Privacy Policy' : 'PaceLync Terms of Use';
+    document.title = chinese ? localized.title : pageType === 'privacy' ? 'Privacy Policy | PaceLync LLC' : 'Terms of Use | PaceLync LLC';
+    if (description) description.content = chinese ? localized.description : pageType === 'privacy' ? 'PaceLync LLC Privacy Policy' : 'PaceLync LLC Terms of Use';
   }
   translations.forEach(([selector, english, chineseText]) => document.querySelectorAll(selector).forEach(node => node.innerHTML = chinese ? chineseText : english));
   document.querySelectorAll('.legal-footer-links').forEach(node => node.innerHTML = chinese ? '<a href="privacy.html">隐私政策</a> · <a href="terms.html">使用条款</a>' : '<a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>');
