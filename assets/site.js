@@ -66,7 +66,6 @@ const translations = [
   ['#contact > .shell > p:not(.eyebrow)', 'For company, product, partnership, or developer program inquiries, contact PaceLync LLC directly.', '如有公司业务、产品合作、商务伙伴或开发者计划相关咨询，欢迎直接联系 PaceLync LLC。'],
   ['.company-details > div:nth-child(1) small', 'Legal entity', '法律主体'],
   ['.company-details > div:nth-child(2) small', 'Registered office', '注册地址'],
-  ['.company-details > div:nth-child(3) small', 'Phone', '联系电话'],
   ['.footer-grid > div:first-child > p', 'Software development, mobile applications, and digital products.', '软件开发、移动应用和数字产品。'],
   ['.footer-grid > div:nth-child(2) h3', 'Company', '公司'],
   ['.footer-grid > div:nth-child(2) a:nth-of-type(1)', 'About Us', '关于我们'],
@@ -99,7 +98,7 @@ const legalChinese = {
       <h2>国际访问</h2><p>如果您从网站托管服务商所在地区之外访问本网站，相关技术信息可能在其他国家或地区处理。我们会合理选择能够提供适当安全保障的服务商。</p>
       <h2>未成年人</h2><p>本公司网站不面向 13 周岁以下儿童，我们也不会通过本网站主动收集儿童个人信息。</p>
       <h2>政策更新</h2><p>随着网站或业务方式变化，我们可能更新本政策。页面顶部的日期代表当前版本的最近更新时间。</p>
-      <h2>联系我们</h2><p>如对本政策有任何疑问，请发送邮件至 <a href="mailto:contact@pacelync.com">contact@pacelync.com</a>，或联系 PaceLync LLC，地址：30 N Gould St Ste N, Sheridan, WY 82801, United States；电话：<a href="tel:+17812610738">+1 781 261 0738</a>。</p>`
+      <h2>联系我们</h2><p>如对本政策有任何疑问，请发送邮件至 <a href="mailto:contact@pacelync.com">contact@pacelync.com</a>，或联系 PaceLync LLC，地址：30 N Gould St Ste N, Sheridan, WY 82801, United States。</p>`
   },
   terms: {
     title: '使用条款｜PaceLync',
@@ -117,7 +116,7 @@ const legalChinese = {
       <h2>可用性与终止</h2><p>在合理必要时，我们可以修改、暂停或停止网站的部分功能。如有合理理由认为网站遭到滥用或面临安全风险，我们可能限制相关访问。</p>
       <h2>条款可分割性</h2><p>如本条款中的某项规定被认定为不可执行，其余规定仍将在法律允许的最大范围内继续有效。</p>
       <h2>条款更新</h2><p>我们可能不时更新这些条款。条款更新后继续使用本网站，即表示接受更新后的版本。</p>
-      <h2>联系我们</h2><p>如对本条款有任何疑问，请发送邮件至 <a href="mailto:contact@pacelync.com">contact@pacelync.com</a>，或联系 PaceLync LLC，地址：30 N Gould St Ste N, Sheridan, WY 82801, United States；电话：<a href="tel:+17812610738">+1 781 261 0738</a>。</p>`
+      <h2>联系我们</h2><p>如对本条款有任何疑问，请发送邮件至 <a href="mailto:contact@pacelync.com">contact@pacelync.com</a>，或联系 PaceLync LLC，地址：30 N Gould St Ste N, Sheridan, WY 82801, United States。</p>`
   }
 };
 
